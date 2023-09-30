@@ -2,6 +2,16 @@ let bars = document.getElementById("bars")
 let menu = document.getElementById("menu")
 let close = document.getElementById("close")
 let nav =document.getElementById("navbar")
+let custom =document.getElementById("custom")
+let customLeft =document.getElementById("custom-left")
+let customImg =document.querySelectorAll(".custom-img")
+let kolom1 = document.getElementById("kolom1")
+let kolom2 = document.getElementById("kolom2")
+let kolom3 = document.getElementById("kolom3")
+let cs1 = document.querySelector (".custom-img1")
+let cs2 = document.querySelector (".custom-img2")
+let cs3 = document.querySelector (".custom-img3")
+let progres = document.querySelector (".progres")
 
 bars.onclick = function (){
     menu.style.marginTop = "11vh"
@@ -86,27 +96,31 @@ before.addEventListener("click",function(){
        
 })
 
-// next.addEventListener("click",function(){
-  
-//     jumbo.src = thumb[jumlah+1].src
-//     src()
-//     jumlah++
-    
-// })
-// ilang()
-// before.addEventListener("click",function(){
-//     for (let i = 0;i < thumb.length;i++){
-//         if(jumbo.src == thumb[i].src){
-//             ilang()
-//         }
-//     }
-//     jumbo.src = thumb[jumlah-1].src
-//     src()
-//     jumlah--
-// })
 
 
 
-
-
-
+window.addEventListener("scroll",function(){
+    let ofsite2 =window.scrollY > kolom2.offsetTop -470
+    let ofsite2Balik =window.scrollY < kolom2.offsetTop - 470
+    let ofsite3 =window.scrollY > kolom3.offsetTop - 470
+    let ofsite3Balik =window.scrollY < kolom3.offsetTop - 470
+    if (ofsite2){
+        cs2.classList.add("custom-img2-active")
+        progres.classList.add("progres2")
+        cs1.classList.add("img1-naik")
+    }else if (ofsite2Balik){
+        cs2.classList.remove("custom-img2-active")
+        cs1.classList.remove("img1-naik")
+        progres.classList.remove("progres2")
+    }
+    if (ofsite3){
+        cs3.classList.add("custom-img3-active")
+        cs2.classList.add("img2-naik")
+        progres.classList.add("progres3")
+    }else if (ofsite3Balik){
+        cs3.classList.remove("custom-img3-active")
+        cs2.classList.remove("img2-naik")
+        progres.classList.remove("progres3")
+    }
+    console.log(ofsite2)
+})
